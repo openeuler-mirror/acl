@@ -1,29 +1,33 @@
 Name:          acl
 Version:       2.2.53
-Release:       4
+Release:       5
 Summary:       Commands for manipulating POSIX access control lists
 
-License:       GPLv2+ and LGPLv2+
+License:       GPLv2+
 URL:           https://savannah.nongnu.org/projects/acl
 Source0:       http://download.savannah.nongnu.org/releases/acl/acl-2.2.53.tar.gz
 
 BuildRequires: libattr-devel gawk libtool gettext
-Conflicts:     filesystem < 3
-Provides:      libacl%{?_isa} libacl
-Obsoletes:     libacl
 
 %description
 This package contains commands for manipulating POSIX access control lists,
 and the libacl.so dynamic library which contains the POSIX 1003.1e draft
 standard 17 functions for manipulating access control lists.
 
+%package -n libacl
+Summary: Library for supporting access control list
+License: LGPLv2+
+Conflicts: filesystem < 3
+
+%description -n libacl
+This package contains the library for manipulating access control list.
 
 %package devel
 Summary:       Files necessary to develop applications with libacl
 License:       LGPLv2+
 Requires:      acl = %{version}-%{release}, libattr-devel
-Provides:      libacl-devel
-Obsoletes:     libacl-devel
+Provides:      libacl-devel = %{name}-%{version}
+Obsoletes:     libacl-devel = %{name}-%{version}
 
 %description devel
 This package contains header files for the POSIX ACL library.
@@ -65,6 +69,8 @@ make check
 %{!?_licensedir:%global license %%doc}
 %license doc/COPYING*
 %{_bindir}/*acl
+
+%files -n libacl
 %{_libdir}/libacl.so.*
 
 %files devel
@@ -81,6 +87,9 @@ make check
 %{_mandir}/man5/*
 
 %changelog
+* Wed Jan 22 2020 openEuler Buildteam <buildteam@openeuler.org> - 2.2.53-5
+- Add libacl package
+
 * Sat Dec 14 2019 openEuler Buildteam <buildteam@openeuler.org> - 2.2.53-4
 - Provides arch releated rpm
 
