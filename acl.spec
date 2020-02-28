@@ -1,6 +1,6 @@
 Name:          acl
 Version:       2.2.53
-Release:       6
+Release:       7
 Summary:       Commands for manipulating POSIX access control lists
 
 License:       GPLv2+
@@ -26,6 +26,7 @@ This package contains the library for manipulating access control list.
 Summary:       Files necessary to develop applications with libacl
 License:       LGPLv2+
 Requires:      libacl = %{version}-%{release}, libattr-devel
+Obsoletes:     acl-devel < %{version}-%{release}
 
 %description -n libacl-devel
 This package contains header files for the POSIX ACL library.
@@ -85,6 +86,9 @@ make check
 %{_mandir}/man5/*
 
 %changelog
+* Fri Feb 28 2020 openEuler Buildteam <buildteam@openeuler.org> - 2.2.53-7
+- Obsoletes acl-devel
+
 * Wed Feb 12 2020 openEuler Buildteam <buildteam@openeuler.org> - 2.2.53-6
 - Change acl-devel to libacl-devel
 
