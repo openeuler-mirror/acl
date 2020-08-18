@@ -1,6 +1,6 @@
 Name:          acl
 Version:       2.2.53
-Release:       7
+Release:       8
 Summary:       Commands for manipulating POSIX access control lists
 
 License:       GPLv2+
@@ -86,6 +86,9 @@ make check
 %{_mandir}/man5/*
 
 %changelog
+* Tue Aug 18 2020 chenyaqiang <chenyaqiang@huawei.com> - 2.2.53-8
+- rebuild for package build
+
 * Fri Feb 28 2020 openEuler Buildteam <buildteam@openeuler.org> - 2.2.53-7
 - Obsoletes acl-devel
 
