@@ -1,11 +1,14 @@
 Name:          acl
-Version:       2.2.53
-Release:       7
+Version:       2.3.1
+Release:       1
 Summary:       Commands for manipulating POSIX access control lists
 
 License:       GPLv2+
 URL:           https://savannah.nongnu.org/projects/acl
-Source0:       http://download.savannah.nongnu.org/releases/acl/acl-2.2.53.tar.gz
+Source0:       http://download.savannah.nongnu.org/releases/acl/%{name}-%{version}.tar.gz
+Source1:       http://download.savannah.nongnu.org/releases/acl/%{name}-%{version}.tar.gz.sig
+#From https://savannah.nongnu.org/people/viewgpg.php?user_id=15000
+Source2:       agruen-key.gpg
 
 BuildRequires: libattr-devel gawk libtool gettext
 
@@ -57,7 +60,7 @@ if ! runuser -u bin -- "${PWD}/setfacl" --version; then
     sed -e 's|test/root/setfacl.test||' -i test/Makemodule.am Makefile.in Makefile
 fi
 
-make check
+%make_build check
 
 %post -n libacl -p /sbin/ldconfig
 
@@ -86,6 +89,9 @@ make check
 %{_mandir}/man5/*
 
 %changelog
+* Tue Jul 27 2021 panxiaohe <panxiaohe@huawei.com> - 2.3.1-1
+- Update to 2.3.1
+
 * Fri Feb 28 2020 openEuler Buildteam <buildteam@openeuler.org> - 2.2.53-7
 - Obsoletes acl-devel
 
