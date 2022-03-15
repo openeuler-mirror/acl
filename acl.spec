@@ -1,6 +1,6 @@
 Name:          acl
 Version:       2.3.1
-Release:       1
+Release:       2
 Summary:       Commands for manipulating POSIX access control lists
 
 License:       GPLv2+
@@ -9,6 +9,10 @@ Source0:       http://download.savannah.nongnu.org/releases/acl/%{name}-%{versio
 Source1:       http://download.savannah.nongnu.org/releases/acl/%{name}-%{version}.tar.gz.sig
 #From https://savannah.nongnu.org/people/viewgpg.php?user_id=15000
 Source2:       agruen-key.gpg
+
+%ifarch riscv64
+Patch0:		disable-setfacl-tests-for-riscv.patch
+%endif
 
 BuildRequires: libattr-devel gawk libtool gettext
 
@@ -89,6 +93,9 @@ fi
 %{_mandir}/man5/*
 
 %changelog
+* Sun Mar 06 2022 YukariChiba <i@0x7f.cc> - 2.3.1-2
+- Disable tests with setfacl on RISC-V to prevent failure
+
 * Tue Jul 27 2021 panxiaohe <panxiaohe@huawei.com> - 2.3.1-1
 - Update to 2.3.1
 

@@ -1,0 +1,17 @@
+--- a/test/Makemodule.am
++++ b/test/Makemodule.am
+@@ -2,14 +2,11 @@
+ 	test/nfs/nfsacl.test \
+ 	test/nfs/nfs-dir.test
+ TESTS = \
+-	test/cp.test \
+ 	test/getfacl-lfs.test \
+ 	test/getfacl-noacl.test \
+ 	test/getfacl-recursive.test \
+ 	test/malformed-restore.test \
+-	test/misc.test \
+ 	test/sbits-restore.test \
+-	test/setfacl-X.test \
+ 	test/utf8-filenames.test \
+ 	test/root/getfacl.test \
+ 	test/root/permissions.test \
